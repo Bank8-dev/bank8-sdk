@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: Copyright Logically Magic Inc. <hello@logicallymagic.com>
+# SPDX-FileCopyrightText: Copyright Hamid Jahanzad <Hamid@Jahanzad.com>
+# SPDX-FileCopyrightText: Copyright Contributors to the Bank8:SDK
+# SPDX-License-Identifier: Apache-2.0
+
+[package]
+name = "bank8-payments-contracts"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+description = "OpenAPI spec and Rust types for Bank8:Payments (payment orchestration)."
+
+[lib]
+name = "bank8_payments_contracts"
+path = "src/lib.rs"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true
+chrono.workspace = true

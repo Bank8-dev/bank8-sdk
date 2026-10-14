@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: Copyright Logically Magic Inc. <hello@logicallymagic.com>
+# SPDX-FileCopyrightText: Copyright Hamid Jahanzad <Hamid@Jahanzad.com>
+# SPDX-FileCopyrightText: Copyright Contributors to the Bank8:SDK
+# SPDX-License-Identifier: Apache-2.0
+
+[package]
+name = "bank8"
+version = "0.1.0"
+edition = "2021"
+license = "UNLICENSED"
+description = "Bank8 namespace facade — every bank8 crate imports as bank8::{svc}::{kind} (architecture-principles §2.1)."
+
+[dependencies]
+async-trait.workspace = true
+tokio.workspace = true
+serde_json.workspace = true
+sentin8.workspace = true
+reqwest.workspace = true
+thiserror.workspace = true
+serde.workspace = true
+chrono.workspace = true
+uuid.workspace = true
+bank8-ledger-contracts.workspace = true
+bank8-payments-contracts.workspace = true
+bank8-fdx-contracts.workspace = true
+bank8-regulatory-contracts.workspace = true
+
+[dev-dependencies]
+# SDK contract tests spin a local mock OAuth/ledger server (sdk.rs #[cfg(test)]).
+mockito = "1"
+
