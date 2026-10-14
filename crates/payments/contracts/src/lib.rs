@@ -157,20 +157,47 @@ mod tests {
 
     #[test]
     fn test_message_codes() {
-        assert_eq!(PayloadType::CreditTransferInitiation.message_code(), "pain.001");
-        assert_eq!(PayloadType::FiToFiPaymentStatusReport.message_code(), "pacs.002");
+        assert_eq!(
+            PayloadType::CreditTransferInitiation.message_code(),
+            "pain.001"
+        );
+        assert_eq!(
+            PayloadType::FiToFiPaymentStatusReport.message_code(),
+            "pacs.002"
+        );
         assert_eq!(PayloadType::PaymentReturn.message_code(), "pacs.004");
-        assert_eq!(PayloadType::FiToFiCustomerCreditTransfer.message_code(), "pacs.008");
+        assert_eq!(
+            PayloadType::FiToFiCustomerCreditTransfer.message_code(),
+            "pacs.008"
+        );
         assert_eq!(PayloadType::PaymentStatusRequest.message_code(), "pacs.028");
-        assert_eq!(PayloadType::ResolutionOfInvestigation.message_code(), "camt.029");
-        assert_eq!(PayloadType::FiToFiPaymentCancellationRequest.message_code(), "camt.056");
-        assert_eq!(PayloadType::ReceiptAcknowledgement.message_code(), "admi.007");
-        assert_eq!(PayloadType::AuthorisationInitiation.message_code(), "cain.001");
+        assert_eq!(
+            PayloadType::ResolutionOfInvestigation.message_code(),
+            "camt.029"
+        );
+        assert_eq!(
+            PayloadType::FiToFiPaymentCancellationRequest.message_code(),
+            "camt.056"
+        );
+        assert_eq!(
+            PayloadType::ReceiptAcknowledgement.message_code(),
+            "admi.007"
+        );
+        assert_eq!(
+            PayloadType::AuthorisationInitiation.message_code(),
+            "cain.001"
+        );
         assert_eq!(PayloadType::FinancialInitiation.message_code(), "cain.003");
         assert_eq!(PayloadType::ReversalInitiation.message_code(), "cain.006");
         assert_eq!(PayloadType::InquiryInitiation.message_code(), "cain.016");
-        assert_eq!(PayloadType::CardManagementInitiation.message_code(), "cain.023");
-        assert_eq!(PayloadType::AdministrativeInitiation.message_code(), "caad.008");
+        assert_eq!(
+            PayloadType::CardManagementInitiation.message_code(),
+            "cain.023"
+        );
+        assert_eq!(
+            PayloadType::AdministrativeInitiation.message_code(),
+            "caad.008"
+        );
     }
 
     #[test]

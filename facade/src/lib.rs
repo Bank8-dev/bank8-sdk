@@ -64,7 +64,11 @@ pub(crate) fn prepare_request(
 ) -> reqwest::RequestBuilder {
     let req = http.request(method, url);
     let req = req.header(CORRELATION_ID_HEADER, generate_correlation_id());
-    if let Some(t) = token { req.bearer_auth(t) } else { req }
+    if let Some(t) = token {
+        req.bearer_auth(t)
+    } else {
+        req
+    }
 }
 
 #[cfg(test)]
