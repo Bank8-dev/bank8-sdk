@@ -1,6 +1,6 @@
 # bank8-fdx-contracts
 
-Wire types for the Bank8:FDX open-banking HTTP API (FDX v6.5) — the
+Wire types for the Bank8:FDX open-banking HTTP API (FDX v6.5) - the
 shared vocabulary between the FDX service, the `bank8` SDK client, and
 any Rust consumer of the consent surface.
 
@@ -12,8 +12,8 @@ service handlers and the SDK client.
 
 ## 2. Motivation
 
-The FDX consent object crosses three boundaries — the FDX provider API
-(`/fdx/v6/consents/{id}`), the internal admin surface, and the app SDK —
+The FDX consent object crosses three boundaries - the FDX provider API
+(`/fdx/v6/consents/{id}`), the internal admin surface, and the app SDK -
 and each must agree on the exact JSON. A contracts crate makes the shape
 a compile-time contract with round-trip tests, so a field rename fails
 the build instead of silently breaking data-recipients.
@@ -33,12 +33,12 @@ graph TD
 
 ## 4. Key Traits and Data Structures
 
-- `struct Consent` — a consent grant as returned by the consent reads.
+- `struct Consent` - a consent grant as returned by the consent reads.
   `status` is the consent lifecycle (`ACTIVE`/`REVOKED`/…); `scopes` is
   the granted FDX permission set (e.g. `accounts:read`,
   `transactions:read`).
 
-Pure data types: `Serialize`/`Deserialize`/`Clone`/`Debug` only — no
+Pure data types: `Serialize`/`Deserialize`/`Clone`/`Debug` only - no
 validation logic (the service owns consent validation, per the FDX
 design §6.2).
 
@@ -47,7 +47,7 @@ design §6.2).
 - **Minimal surface**: only the consent DTO is shared; the full FDX
   v6.5 provider payloads (accounts, transactions, statements) are
   served as spec-shaped JSON from the provider routes and are
-  intentionally not modeled here — they mirror the external FDX
+  intentionally not modeled here - they mirror the external FDX
   standard, and duplicating that spec in Rust types adds drift risk
   without adding type safety for consumers.
 - **`scopes: Vec<String>`** rather than a scoped enum: FDX permission

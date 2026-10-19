@@ -26,7 +26,7 @@ pub struct Instruction {
     pub correlation_id: String,
     /// Scheme payload (typed ISO 20022 envelope as JSON).
     pub input: serde_json::Value,
-    /// Execution result — absent while in flight.
+    /// Execution result - absent while in flight.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub output: Option<serde_json::Value>,
     /// Creation timestamp.
@@ -43,35 +43,35 @@ pub struct Instruction {
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum PayloadType {
     // ── Account-to-Account (A2A) ──
-    /// pain.001 — Customer credit transfer initiation
+    /// pain.001 - Customer credit transfer initiation
     CreditTransferInitiation,
-    /// pacs.002 — FI-to-FI payment status report
+    /// pacs.002 - FI-to-FI payment status report
     FiToFiPaymentStatusReport,
-    /// pacs.004 — Payment return
+    /// pacs.004 - Payment return
     PaymentReturn,
-    /// pacs.008 — FI-to-FI customer credit transfer
+    /// pacs.008 - FI-to-FI customer credit transfer
     FiToFiCustomerCreditTransfer,
-    /// pacs.028 — Payment status request
+    /// pacs.028 - Payment status request
     PaymentStatusRequest,
-    /// camt.029 — Resolution of investigation
+    /// camt.029 - Resolution of investigation
     ResolutionOfInvestigation,
-    /// camt.056 — FI-to-FI payment cancellation request
+    /// camt.056 - FI-to-FI payment cancellation request
     FiToFiPaymentCancellationRequest,
-    /// admi.007 — Receipt acknowledgement
+    /// admi.007 - Receipt acknowledgement
     ReceiptAcknowledgement,
 
     // ── Cards ──
-    /// cain.001 — Authorisation initiation
+    /// cain.001 - Authorisation initiation
     AuthorisationInitiation,
-    /// cain.003 — Financial presentment
+    /// cain.003 - Financial presentment
     FinancialInitiation,
-    /// cain.006 — Reversal
+    /// cain.006 - Reversal
     ReversalInitiation,
-    /// cain.016 — Inquiry
+    /// cain.016 - Inquiry
     InquiryInitiation,
-    /// cain.023 — Card management
+    /// cain.023 - Card management
     CardManagementInitiation,
-    /// caad.008 — Administrative
+    /// caad.008 - Administrative
     AdministrativeInitiation,
 }
 

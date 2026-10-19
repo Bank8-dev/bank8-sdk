@@ -5,7 +5,7 @@
 
 //! # FDX client
 //!
-//! Rust client for the Bank8:FDX open-banking service — consents, recipient
+//! Rust client for the Bank8:FDX open-banking service - consents, recipient
 //! accounts, transactions, statements, payment networks, customers,
 //! transfers, and payments. See `services/fdx/DESIGN.md`.
 //!
@@ -91,7 +91,7 @@ impl Fdx8Client {
 
     // ── Consents ──────────────────────────────────────────────────────
 
-    /// `POST /v1/recipient/consents/start` — start a consent flow.
+    /// `POST /v1/recipient/consents/start` - start a consent flow.
     pub async fn start_consent(&self, req: &StartConsentRequest) -> Result<Consent, Fdx8Error> {
         let resp = prepare_request(
             &self.http_client,
@@ -106,7 +106,7 @@ impl Fdx8Client {
         Self::decode(resp).await
     }
 
-    /// `GET /v1/recipient/consents` — list consents.
+    /// `GET /v1/recipient/consents` - list consents.
     pub async fn list_consents(&self) -> Result<Vec<Consent>, Fdx8Error> {
         let resp = prepare_request(
             &self.http_client,
@@ -120,7 +120,7 @@ impl Fdx8Client {
         Self::decode(resp).await
     }
 
-    /// `POST /v1/recipient/consents/{id}/refresh` — refresh a consent.
+    /// `POST /v1/recipient/consents/{id}/refresh` - refresh a consent.
     pub async fn refresh_consent(&self, id: Uuid) -> Result<Consent, Fdx8Error> {
         let resp = prepare_request(
             &self.http_client,
@@ -134,7 +134,7 @@ impl Fdx8Client {
         Self::decode(resp).await
     }
 
-    /// `POST /v1/recipient/consents/{id}/revoke` — revoke a consent.
+    /// `POST /v1/recipient/consents/{id}/revoke` - revoke a consent.
     pub async fn revoke_consent(&self, id: Uuid) -> Result<(), Fdx8Error> {
         let resp = prepare_request(
             &self.http_client,
@@ -150,7 +150,7 @@ impl Fdx8Client {
 
     // ── Recipient Accounts ────────────────────────────────────────────
 
-    /// `GET /v1/recipient/accounts` — list recipient accounts.
+    /// `GET /v1/recipient/accounts` - list recipient accounts.
     pub async fn list_recipient_accounts(&self) -> Result<Vec<RecipientAccount>, Fdx8Error> {
         let resp = prepare_request(
             &self.http_client,
@@ -164,7 +164,7 @@ impl Fdx8Client {
         Self::decode(resp).await
     }
 
-    /// `GET /v1/recipient/accounts/{id}/transactions` — get account transactions.
+    /// `GET /v1/recipient/accounts/{id}/transactions` - get account transactions.
     pub async fn get_account_transactions(&self, id: Uuid) -> Result<Vec<Transaction>, Fdx8Error> {
         let resp = prepare_request(
             &self.http_client,
@@ -178,7 +178,7 @@ impl Fdx8Client {
         Self::decode(resp).await
     }
 
-    /// `GET /fdx/v6/accounts/{id}/statements` — list account statements.
+    /// `GET /fdx/v6/accounts/{id}/statements` - list account statements.
     pub async fn list_account_statements(
         &self,
         account_id: Uuid,
@@ -195,7 +195,7 @@ impl Fdx8Client {
         Self::decode(resp).await
     }
 
-    /// `GET /fdx/v6/accounts/{id}/payment-networks` — get payment networks.
+    /// `GET /fdx/v6/accounts/{id}/payment-networks` - get payment networks.
     pub async fn get_payment_networks(
         &self,
         account_id: Uuid,
@@ -214,7 +214,7 @@ impl Fdx8Client {
 
     // ── Customers ─────────────────────────────────────────────────────
 
-    /// `GET /fdx/v6/customers` — list customers.
+    /// `GET /fdx/v6/customers` - list customers.
     pub async fn list_customers(&self) -> Result<Vec<Customer>, Fdx8Error> {
         let resp = prepare_request(
             &self.http_client,
@@ -228,7 +228,7 @@ impl Fdx8Client {
         Self::decode(resp).await
     }
 
-    /// `GET /fdx/v6/customers/current` — get the current customer.
+    /// `GET /fdx/v6/customers/current` - get the current customer.
     pub async fn get_current_customer(&self) -> Result<Customer, Fdx8Error> {
         let resp = prepare_request(
             &self.http_client,
@@ -244,7 +244,7 @@ impl Fdx8Client {
 
     // ── Transfers & Payments ──────────────────────────────────────────
 
-    /// `POST /fdx/v6/transfers` — create a transfer.
+    /// `POST /fdx/v6/transfers` - create a transfer.
     pub async fn create_transfer(
         &self,
         req: &CreateTransferRequest,
@@ -262,7 +262,7 @@ impl Fdx8Client {
         Self::decode(resp).await
     }
 
-    /// `POST /fdx/v6/payments` — create a payment.
+    /// `POST /fdx/v6/payments` - create a payment.
     pub async fn create_payment(&self, req: &CreatePaymentRequest) -> Result<Payment, Fdx8Error> {
         let resp = prepare_request(
             &self.http_client,

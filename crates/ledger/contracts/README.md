@@ -1,6 +1,6 @@
 # bank8-ledger-contracts
 
-Wire types for the Bank8:Ledger HTTP API — the shared vocabulary between
+Wire types for the Bank8:Ledger HTTP API - the shared vocabulary between
 the ledger service, the `bank8` SDK client, and any Rust consumer of the
 ledger's public REST surface.
 
@@ -15,7 +15,7 @@ in their test suites.
 ## 2. Motivation
 
 Without a shared contracts crate, the ledger service and every client
-drift independently on wire shapes — field renames silently break
+drift independently on wire shapes - field renames silently break
 consumers at runtime. A dedicated contracts crate compiles the wire
 format once, so a shape change is a compile error on both sides, and the
 round-trip tests guarantee serialization stability (money stays a JSON
@@ -39,14 +39,14 @@ graph TD
 
 ## 4. Key Traits and Data Structures
 
-- `struct Account` — a ledger account as returned by `GET /v1/accounts`.
+- `struct Account` - a ledger account as returned by `GET /v1/accounts`.
   `denomination` is an ISO 4217 currency code; `status` is the account
   lifecycle state (`OPEN`/`PENDING`/`CLOSED`).
-- `struct Balance` — a point-in-time balance reading for one account.
+- `struct Balance` - a point-in-time balance reading for one account.
   `amount` is a **JSON string** on the wire (money is never a float);
   `balance_type` names the balance phase (`AVAILABLE`, `COMMITTED`, …).
 
-Both derive `Serialize`/`Deserialize`/`Clone`/`Debug` and nothing else —
+Both derive `Serialize`/`Deserialize`/`Clone`/`Debug` and nothing else -
 no behavior lives here.
 
 ## 5. Rationale, Trade-offs, and Alternatives
@@ -60,7 +60,7 @@ no behavior lives here.
   belongs to the service (reject at the boundary) and to consumers.
   This keeps the crate free of business rules that would duplicate the
   service's.
-- **Rejected: one `bank8-contracts` crate for all services** — per-service
+- **Rejected: one `bank8-contracts` crate for all services** - per-service
   contracts crates let a consumer depend on exactly one service's
   vocabulary (e.g. an app consuming only ledger) without pulling in
   payments/FDX types.
@@ -78,7 +78,7 @@ no behavior lives here.
 
 - Product, posting, and schedule wire types live in the SDK
   request/response structs today. Decision rule, not a TODO: the first
-  non-SDK Rust consumer that needs them triggers the graduation — until
+  non-SDK Rust consumer that needs them triggers the graduation - until
   then the crate stays minimal and a duplicate vocabulary is the bigger
   risk.
 

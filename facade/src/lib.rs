@@ -3,35 +3,35 @@
 // SPDX-FileCopyrightText: Copyright Contributors to the Bank8:SDK
 // SPDX-License-Identifier: Apache-2.0
 
-//! # bank8 — Bank8 workspace namespace facade
+//! # bank8 - Bank8 workspace namespace facade
 //! Every bank8 crate is named `bank8::{leaf}` and is imported through this
 //! facade; service-scoped crates nest under their service module. The SDK
 //! client for each service lives in the same module (architecture-principles
-//! §2.1; the SDK modules moved here from the platform SDK — zero vertical
+//! §2.1; the SDK modules moved here from the platform SDK - zero vertical
 //! knowledge in sentin8, §4.14).
 
-/// Bank8:Ledger — SDK client + contracts.
+/// Bank8:Ledger - SDK client + contracts.
 pub mod ledger {
     pub use bank8_ledger_contracts as contracts;
     mod sdk;
     pub use sdk::{LedgerClient, LedgerError};
 }
 
-/// Bank8:Payments — SDK client + contracts.
+/// Bank8:Payments - SDK client + contracts.
 pub mod payments {
     pub use bank8_payments_contracts as contracts;
     mod sdk;
     pub use sdk::{PaymentsClient, PaymentsError};
 }
 
-/// Bank8:FDX — SDK client + contracts.
+/// Bank8:FDX - SDK client + contracts.
 pub mod fdx {
     pub use bank8_fdx_contracts as contracts;
     mod sdk;
     pub use sdk::{Fdx8Client, Fdx8Error};
 }
 
-/// Bank8 regulatory services (reporting, risk, compliance) — shared
+/// Bank8 regulatory services (reporting, risk, compliance) - shared
 /// jurisdiction registry and report-kind contracts, imported through the
 /// facade per the namespace rule (architecture-principles §2.1).
 pub mod regulatory {

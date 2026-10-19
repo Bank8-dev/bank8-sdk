@@ -6,18 +6,18 @@
 //! # bank8-regulatory-contracts
 //!
 //! Wire types and the jurisdiction registry vocabulary shared across the
-//! bank8 regulatory services (reporting, risk, compliance) — see
+//! bank8 regulatory services (reporting, risk, compliance) - see
 //! `services/{reporting,risk,compliance}/DESIGN.md` §3. Pure data types:
-//! `Serialize`/`Deserialize`/`Clone`/`Debug` only; no validation logic —
+//! `Serialize`/`Deserialize`/`Clone`/`Debug` only; no validation logic -
 //! each service owns its own validation (the fdx-contracts precedent).
 //!
 //! The jurisdiction registry is runtime data (registry tables provisioned
-//! by `vertical enroll`; zero regulator names in code — principles §4.14):
+//! by `vertical enroll`; zero regulator names in code - principles §4.14):
 //! these DTOs are the wire shape, never the source of truth.
 
 use serde::{Deserialize, Serialize};
 
-/// A regulatory jurisdiction (country code + regulator list) — one entry of
+/// A regulatory jurisdiction (country code + regulator list) - one entry of
 /// the runtime jurisdiction registry.
 ///
 /// # Examples
@@ -48,7 +48,7 @@ pub struct Regulator {
     pub return_templates: Vec<ReturnTemplate>,
 }
 
-/// A declarative return definition — data sources, format, and cadence.
+/// A declarative return definition - data sources, format, and cadence.
 /// Changing a regulator's format updates the registry, never the code.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ReturnTemplate {
@@ -60,7 +60,7 @@ pub struct ReturnTemplate {
     pub cadence: String,
 }
 
-/// A configured risk limit with its breach state — the vocabulary Risk
+/// A configured risk limit with its breach state - the vocabulary Risk
 /// reads limits into and Reporting reads exposure inputs through.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct RiskLimit {
@@ -109,7 +109,7 @@ mod tests {
         }
     }
 
-    /// Round-trip stability: the registry JSON shape is pinned — any
+    /// Round-trip stability: the registry JSON shape is pinned - any
     /// serialization drift fails the build (crate README §6 invariant).
     #[test]
     fn jurisdiction_serde_roundtrip() {

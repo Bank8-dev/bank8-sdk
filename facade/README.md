@@ -1,4 +1,4 @@
-# bank8 — Rust namespace facade
+# bank8 - Rust namespace facade
 
 The unified Rust entry point for the Bank8 vertical: SDK clients and
 contracts for Bank8:Ledger, Bank8:Payments, and Bank8:FDX, imported as
@@ -19,7 +19,7 @@ import surface that (a) hides the crate graph behind a stable namespace,
 (b) enforces the same client conventions (builder pattern, bearer token,
 correlation header) across all services, and (c) keeps zero vertical
 knowledge inside the platform SDK (`sentin8` re-exports nothing
-bank8-specific — architecture-principles §4.14).
+bank8-specific - architecture-principles §4.14).
 
 ## 3. Architecture & High-Level Design
 
@@ -46,15 +46,15 @@ is attached.
 
 ## 4. Key Traits and Data Structures
 
-- `trait ClientBuilder` — the uniform builder contract every service
+- `trait ClientBuilder` - the uniform builder contract every service
   client implements: `with_base_url`, `with_token`, `with_http_client`.
   Clients are cheap to clone (an inner `reqwest::Client` is reused).
-- `LedgerClient` / `PaymentsClient` / `Fdx8Client` — typed async clients
+- `LedgerClient` / `PaymentsClient` / `Fdx8Client` - typed async clients
   over each service's REST surface. Every method maps 1:1 to an endpoint,
   decodes into the contracts types, and returns the service's error enum
   (`LedgerError` / `PaymentsError` / `Fdx8Error`: transport, decode, and
   status variants).
-- `CORRELATION_ID_HEADER` / `generate_correlation_id()` — the
+- `CORRELATION_ID_HEADER` / `generate_correlation_id()` - the
   cross-service tracing convention: callers may propagate a correlation
   id upstream; the client always injects one when absent.
 
@@ -62,7 +62,7 @@ is attached.
 
 - **Facade over direct leaf imports**: `bank8::{svc}` imports survive
   crate reorganizations behind the facade, and the workspace enforces
-  the namespace rule mechanically — a consumer importing
+  the namespace rule mechanically - a consumer importing
   `bank8_ledger_contracts::…` directly is visible in review.
 - **Method-per-endpoint over a generic HTTP caller**: the typed methods
   give compile-checked paths and decode types; a generic
@@ -71,13 +71,13 @@ is attached.
 - **`reqwest` under the hood**: clients dial through Sentin8:Proxy with
   the platform TLS stack; `with_http_client` exists for tests (mockito)
   and for callers that need a custom TLS configuration.
-- **Rejected: dynamic service discovery inside the client** — base URLs
+- **Rejected: dynamic service discovery inside the client** - base URLs
   come from the caller (config/service discovery), keeping the SDK
   side-effect-free and unit-testable without a live platform.
 
 ## 6. Internal Implementation & Invariants
 
-- Every request passes through `prepare_request` — no client method may
+- Every request passes through `prepare_request` - no client method may
   bypass the correlation-id injection.
 - Error enums never expose reqwest types; transport failures are mapped
   to the client's own `Http(String)` variant so consumers depend only

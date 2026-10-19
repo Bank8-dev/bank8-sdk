@@ -5,7 +5,7 @@
 
 //! # Ledger client
 //!
-//! Rust client for the Bank8:Ledger core-ledger service — accounts, products,
+//! Rust client for the Bank8:Ledger core-ledger service - accounts, products,
 //! postings, balances, and schedules. See `services/ledger/DESIGN.md`.
 //!
 //! # Examples
@@ -83,7 +83,7 @@ impl LedgerClient {
 
     // ── Accounts ──────────────────────────────────────────────────────
 
-    /// `GET /v1/accounts` — list accounts (optional status filter).
+    /// `GET /v1/accounts` - list accounts (optional status filter).
     pub async fn list_accounts(&self, status: Option<&str>) -> Result<Vec<Account>, LedgerError> {
         let path = match status {
             Some(s) => format!("/v1/accounts?status={s}"),
@@ -101,7 +101,7 @@ impl LedgerClient {
         Self::decode(resp).await
     }
 
-    /// `GET /v1/accounts/{id}` — get an account.
+    /// `GET /v1/accounts/{id}` - get an account.
     pub async fn get_account(&self, id: Uuid) -> Result<Account, LedgerError> {
         let resp = prepare_request(
             &self.http_client,
@@ -115,7 +115,7 @@ impl LedgerClient {
         Self::decode(resp).await
     }
 
-    /// `POST /v1/accounts` — create an account.
+    /// `POST /v1/accounts` - create an account.
     pub async fn create_account(&self, req: &CreateAccountRequest) -> Result<Account, LedgerError> {
         let resp = prepare_request(
             &self.http_client,
@@ -132,7 +132,7 @@ impl LedgerClient {
 
     // ── Products ──────────────────────────────────────────────────────
 
-    /// `GET /v1/products` — list products.
+    /// `GET /v1/products` - list products.
     pub async fn list_products(&self) -> Result<Vec<Product>, LedgerError> {
         let resp = prepare_request(
             &self.http_client,
@@ -146,7 +146,7 @@ impl LedgerClient {
         Self::decode(resp).await
     }
 
-    /// `POST /v1/products` — create a product.
+    /// `POST /v1/products` - create a product.
     pub async fn create_product(&self, req: &CreateProductRequest) -> Result<Product, LedgerError> {
         let resp = prepare_request(
             &self.http_client,
@@ -163,7 +163,7 @@ impl LedgerClient {
 
     // ── Postings ──────────────────────────────────────────────────────
 
-    /// `POST /v1/postings` — create a posting batch.
+    /// `POST /v1/postings` - create a posting batch.
     pub async fn create_postings(
         &self,
         req: &CreatePostingsRequest,
@@ -183,7 +183,7 @@ impl LedgerClient {
 
     // ── Balances ──────────────────────────────────────────────────────
 
-    /// `GET /v1/accounts/{id}/balances` — get balances for an account.
+    /// `GET /v1/accounts/{id}/balances` - get balances for an account.
     pub async fn get_balances(&self, account_id: Uuid) -> Result<Vec<Balance>, LedgerError> {
         let resp = prepare_request(
             &self.http_client,
@@ -199,7 +199,7 @@ impl LedgerClient {
 
     // ── Schedules ─────────────────────────────────────────────────────
 
-    /// `GET /v1/schedules` — list schedules.
+    /// `GET /v1/schedules` - list schedules.
     pub async fn list_schedules(&self) -> Result<Vec<Schedule>, LedgerError> {
         let resp = prepare_request(
             &self.http_client,
@@ -213,7 +213,7 @@ impl LedgerClient {
         Self::decode(resp).await
     }
 
-    /// `POST /v1/schedules` — create a schedule.
+    /// `POST /v1/schedules` - create a schedule.
     pub async fn create_schedule(
         &self,
         req: &CreateScheduleRequest,

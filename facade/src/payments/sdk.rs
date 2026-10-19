@@ -5,7 +5,7 @@
 
 //! # Payments client
 //!
-//! Rust client for the Bank8:Payments payment-orchestration service —
+//! Rust client for the Bank8:Payments payment-orchestration service -
 //! instructions, payments, payment instruments, account links, rules,
 //! and files. See `services/payments/DESIGN.md`.
 //!
@@ -93,7 +93,7 @@ impl PaymentsClient {
 
     // ── Instructions ──────────────────────────────────────────────────
 
-    /// `GET /v1/instructions` — list instructions (optional state filter).
+    /// `GET /v1/instructions` - list instructions (optional state filter).
     pub async fn list_instructions(
         &self,
         state: Option<&str>,
@@ -114,7 +114,7 @@ impl PaymentsClient {
         Self::decode(resp).await
     }
 
-    /// `GET /v1/instructions/{id}` — get an instruction.
+    /// `GET /v1/instructions/{id}` - get an instruction.
     pub async fn get_instruction(&self, id: Uuid) -> Result<Instruction, PaymentsError> {
         let resp = prepare_request(
             &self.http_client,
@@ -128,7 +128,7 @@ impl PaymentsClient {
         Self::decode(resp).await
     }
 
-    /// `POST /v1/instructions` — create an instruction.
+    /// `POST /v1/instructions` - create an instruction.
     pub async fn create_instruction(
         &self,
         req: &CreateInstructionRequest,
@@ -146,7 +146,7 @@ impl PaymentsClient {
         Self::decode(resp).await
     }
 
-    /// `POST /v1/instructions/{id}/retry` — retry an instruction.
+    /// `POST /v1/instructions/{id}/retry` - retry an instruction.
     pub async fn retry_instruction(&self, id: Uuid) -> Result<Instruction, PaymentsError> {
         let resp = prepare_request(
             &self.http_client,
@@ -160,7 +160,7 @@ impl PaymentsClient {
         Self::decode(resp).await
     }
 
-    /// `POST /v1/instructions/{id}/cancel` — cancel an instruction.
+    /// `POST /v1/instructions/{id}/cancel` - cancel an instruction.
     pub async fn cancel_instruction(&self, id: Uuid) -> Result<(), PaymentsError> {
         let resp = prepare_request(
             &self.http_client,
@@ -174,7 +174,7 @@ impl PaymentsClient {
         Self::decode_empty(resp).await
     }
 
-    /// `POST /v1/instructions/{id}/repair` — repair an instruction with new input.
+    /// `POST /v1/instructions/{id}/repair` - repair an instruction with new input.
     pub async fn repair_instruction(
         &self,
         id: Uuid,
@@ -195,7 +195,7 @@ impl PaymentsClient {
 
     // ── Payments ──────────────────────────────────────────────────────
 
-    /// `GET /v1/payments` — list payments.
+    /// `GET /v1/payments` - list payments.
     pub async fn list_payments(&self) -> Result<Vec<Payment>, PaymentsError> {
         let resp = prepare_request(
             &self.http_client,
@@ -209,7 +209,7 @@ impl PaymentsClient {
         Self::decode(resp).await
     }
 
-    /// `GET /v1/payments/{id}` — get a payment.
+    /// `GET /v1/payments/{id}` - get a payment.
     pub async fn get_payment(&self, id: Uuid) -> Result<Payment, PaymentsError> {
         let resp = prepare_request(
             &self.http_client,
@@ -225,7 +225,7 @@ impl PaymentsClient {
 
     // ── Payment Instruments ───────────────────────────────────────────
 
-    /// `GET /v1/payment-instruments` — list payment instruments.
+    /// `GET /v1/payment-instruments` - list payment instruments.
     pub async fn list_payment_instruments(&self) -> Result<Vec<PaymentInstrument>, PaymentsError> {
         let resp = prepare_request(
             &self.http_client,
@@ -239,7 +239,7 @@ impl PaymentsClient {
         Self::decode(resp).await
     }
 
-    /// `POST /v1/payment-instruments` — create a payment instrument.
+    /// `POST /v1/payment-instruments` - create a payment instrument.
     pub async fn create_payment_instrument(
         &self,
         req: &CreatePaymentInstrumentRequest,
@@ -259,7 +259,7 @@ impl PaymentsClient {
 
     // ── Account Links ──────────────────────────────────────────────────
 
-    /// `GET /v1/account-links` — list account links.
+    /// `GET /v1/account-links` - list account links.
     pub async fn list_account_links(&self) -> Result<Vec<AccountLink>, PaymentsError> {
         let resp = prepare_request(
             &self.http_client,
@@ -273,7 +273,7 @@ impl PaymentsClient {
         Self::decode(resp).await
     }
 
-    /// `POST /v1/account-links` — create an account link.
+    /// `POST /v1/account-links` - create an account link.
     pub async fn create_account_link(
         &self,
         req: &CreateAccountLinkRequest,
@@ -293,7 +293,7 @@ impl PaymentsClient {
 
     // ── Rules ──────────────────────────────────────────────────────────
 
-    /// `GET /v1/rules` — list rules.
+    /// `GET /v1/rules` - list rules.
     pub async fn list_rules(&self) -> Result<Vec<Rule>, PaymentsError> {
         let resp = prepare_request(
             &self.http_client,
@@ -307,7 +307,7 @@ impl PaymentsClient {
         Self::decode(resp).await
     }
 
-    /// `POST /v1/rules` — create a rule.
+    /// `POST /v1/rules` - create a rule.
     pub async fn create_rule(&self, req: &CreateRuleRequest) -> Result<Rule, PaymentsError> {
         let resp = prepare_request(
             &self.http_client,
@@ -324,7 +324,7 @@ impl PaymentsClient {
 
     // ── Files ──────────────────────────────────────────────────────────
 
-    /// `GET /v1/files` — list files.
+    /// `GET /v1/files` - list files.
     pub async fn list_files(&self) -> Result<Vec<FileSummary>, PaymentsError> {
         let resp = prepare_request(
             &self.http_client,
@@ -338,7 +338,7 @@ impl PaymentsClient {
         Self::decode(resp).await
     }
 
-    /// `POST /v1/files` — upload a file.
+    /// `POST /v1/files` - upload a file.
     pub async fn upload_file(&self, req: &UploadFileRequest) -> Result<FileSummary, PaymentsError> {
         let resp = prepare_request(
             &self.http_client,
