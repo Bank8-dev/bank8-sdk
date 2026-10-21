@@ -13,7 +13,7 @@
 //! ```no_run
 //! # use bank8::ledger::{LedgerClient, LedgerError};
 //! # async fn demo() -> Result<(), LedgerError> {
-//! let client = LedgerClient::new("https://bank8-ledger.ops.sys.sentin8.local").build();
+//! let client = LedgerClient::new("https://bank8-ledger.ops.sys.local.sentin8.dev").build();
 //! let accounts = client.list_accounts(None).await?;
 //! # Ok(())
 //! # }
@@ -443,12 +443,12 @@ mod tests {
     #[test]
     fn builder_attaches_token_and_strips_slash() {
         provider();
-        let client = LedgerClient::new("https://bank8-ledger.ops.sys.sentin8.local/")
+        let client = LedgerClient::new("https://bank8-ledger.ops.sys.local.sentin8.dev/")
             .with_token("tok")
             .build();
         assert_eq!(
             client.base_url,
-            "https://bank8-ledger.ops.sys.sentin8.local"
+            "https://bank8-ledger.ops.sys.local.sentin8.dev"
         );
         assert_eq!(client.auth_token.as_deref(), Some("tok"));
     }

@@ -14,7 +14,7 @@
 //! ```no_run
 //! # use bank8::fdx::{Fdx8Client, Fdx8Error};
 //! # async fn demo() -> Result<(), Fdx8Error> {
-//! let client = Fdx8Client::new("https://bank8-fdx.ops.sys.sentin8.local").build();
+//! let client = Fdx8Client::new("https://bank8-fdx.ops.sys.local.sentin8.dev").build();
 //! let consents = client.list_consents().await?;
 //! # Ok(())
 //! # }
@@ -483,10 +483,10 @@ mod tests {
     #[test]
     fn builder_attaches_token_and_strips_slash() {
         provider();
-        let client = Fdx8Client::new("https://bank8-fdx.ops.sys.sentin8.local/")
+        let client = Fdx8Client::new("https://bank8-fdx.ops.sys.local.sentin8.dev/")
             .with_token("tok")
             .build();
-        assert_eq!(client.base_url, "https://bank8-fdx.ops.sys.sentin8.local");
+        assert_eq!(client.base_url, "https://bank8-fdx.ops.sys.local.sentin8.dev");
         assert_eq!(client.auth_token.as_deref(), Some("tok"));
     }
 
