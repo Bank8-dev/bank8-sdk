@@ -1,4 +1,8 @@
 # bank8-regulatory-contracts
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](../../../../LICENSE)
+[![Built with Rust](https://img.shields.io/badge/Built%20with-Rust-orange.svg)](https://www.rust-lang.org/)
+[![Docs](https://img.shields.io/badge/docs/read-3aa757.svg)](https://bank8.dev/docs/sdk/facade)
+[![Website](https://img.shields.io/badge/website-bank8.dev-1a73e8.svg)](https://bank8.dev/docs/sdk)
 
 Wire types and the jurisdiction registry vocabulary shared across the
 bank8 regulatory services (reporting, risk, compliance) - the shared

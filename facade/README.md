@@ -1,4 +1,8 @@
 # bank8 - Rust namespace facade
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](../../LICENSE)
+[![Built with Rust](https://img.shields.io/badge/Built%20with-Rust-orange.svg)](https://www.rust-lang.org/)
+[![Docs](https://img.shields.io/badge/docs/read-3aa757.svg)](https://bank8.dev/docs/sdk/facade)
+[![Website](https://img.shields.io/badge/website-bank8.dev-1a73e8.svg)](https://bank8.dev/docs/sdk)
 
 The unified Rust entry point for the Bank8 vertical: SDK clients and
 contracts for Bank8:Ledger, Bank8:Payments, and Bank8:FDX, imported as
