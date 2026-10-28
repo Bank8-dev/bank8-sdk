@@ -486,7 +486,10 @@ mod tests {
         let client = Fdx8Client::new("https://bank8-fdx.ops.sys.local.sentin8.dev/")
             .with_token("tok")
             .build();
-        assert_eq!(client.base_url, "https://bank8-fdx.ops.sys.local.sentin8.dev");
+        assert_eq!(
+            client.base_url,
+            "https://bank8-fdx.ops.sys.local.sentin8.dev"
+        );
         assert_eq!(client.auth_token.as_deref(), Some("tok"));
     }
 
