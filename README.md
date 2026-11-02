@@ -20,8 +20,10 @@ other way: `sentin8` never references bank8 (§4.14).
 | `facade` (package `bank8`) | The namespace facade - every leaf crate nests under its service module |
 | `crates/ledger/contracts` | Bank8:Ledger wire types - accounts, postings, statements |
 | `crates/payments/contracts` | Bank8:Payments wire types - instructions, batches, calendars |
-| `crates/fdx/contracts` | Bank8:FDX wire types - consent-driven financial data exchange |
 | `crates/regulatory/contracts` | Shared jurisdiction registry + report kinds (reporting/risk/compliance) |
+
+Open banking is OpenFin8: the per-jurisdiction provider/recipient surfaces
+and their SDK ship in the OpenFin8 vertical, not in this workspace.
 
 ## 3. Consumption
 

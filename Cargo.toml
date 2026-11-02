@@ -7,7 +7,6 @@
 resolver = "2"
 members = [
     "facade",
-    "crates/fdx/contracts",
     "crates/ledger/contracts",
     "crates/payments/contracts",
     "crates/regulatory/contracts",
@@ -70,5 +69,4 @@ sentin8 = { git = "https://github.com/Sentin8/sentin8-sdk", tag = "sdk-v0.6.23" 
 utoipa = { version = "5", features = ["chrono", "uuid", "decimal"] }
 bank8-ledger-contracts = { path = "crates/ledger/contracts" }
 bank8-payments-contracts = { path = "crates/payments/contracts" }
-bank8-fdx-contracts = { path = "crates/fdx/contracts" }
 bank8-regulatory-contracts = { path = "crates/regulatory/contracts" }

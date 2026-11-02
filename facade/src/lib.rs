@@ -24,13 +24,6 @@ pub mod payments {
     pub use sdk::{PaymentsClient, PaymentsError};
 }
 
-/// Bank8:FDX - SDK client + contracts.
-pub mod fdx {
-    pub use bank8_fdx_contracts as contracts;
-    mod sdk;
-    pub use sdk::{Fdx8Client, Fdx8Error};
-}
-
 /// Bank8 regulatory services (reporting, risk, compliance) - shared
 /// jurisdiction registry and report-kind contracts, imported through the
 /// facade per the namespace rule (architecture-principles §2.1).

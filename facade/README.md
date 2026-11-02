@@ -5,8 +5,9 @@
 [![Website](https://img.shields.io/badge/website-bank8.dev-1a73e8.svg)](https://bank8.dev/docs/sdk)
 
 The unified Rust entry point for the Bank8 vertical: SDK clients and
-contracts for Bank8:Ledger, Bank8:Payments, and Bank8:FDX, imported as
-`bank8::{service}::{…}`.
+contracts for Bank8:Ledger and Bank8:Payments, imported as
+`bank8::{service}::{…}`. Open banking is OpenFin8 - its SDK ships in the
+OpenFin8 vertical, not here.
 
 ## 1. Summary
 
@@ -33,14 +34,11 @@ graph TD
     subgraph F["bank8 facade (sdk/rust/bank8)"]
         L["bank8::ledger<br/>LedgerClient + contracts"]
         P["bank8::payments<br/>PaymentsClient + contracts"]
-        X["bank8::fdx<br/>Fdx8Client + contracts"]
     end
     L --> LC["bank8-ledger-contracts"]
     P --> PC["bank8-payments-contracts"]
-    X --> XC["bank8-fdx-contracts"]
     L -- "HTTPS /v1/*" --> LSVC["Bank8:Ledger service"]
     P -- "HTTPS /v1/*" --> PSVC["Bank8:Payments service"]
-    X -- "HTTPS /fdx/v6/* + /v1/*" --> XSVC["Bank8:FDX service"]
 ```
 
 The facade's shared plumbing (`ClientBuilder`, `CORRELATION_ID_HEADER`,
@@ -53,11 +51,11 @@ is attached.
 - `trait ClientBuilder` - the uniform builder contract every service
   client implements: `with_base_url`, `with_token`, `with_http_client`.
   Clients are cheap to clone (an inner `reqwest::Client` is reused).
-- `LedgerClient` / `PaymentsClient` / `Fdx8Client` - typed async clients
-  over each service's REST surface. Every method maps 1:1 to an endpoint,
-  decodes into the contracts types, and returns the service's error enum
-  (`LedgerError` / `PaymentsError` / `Fdx8Error`: transport, decode, and
-  status variants).
+- `LedgerClient` / `PaymentsClient` - typed async clients over each
+  service's REST surface. Every method maps 1:1 to an endpoint, decodes
+  into the contracts types, and returns the service's error enum
+  (`LedgerError` / `PaymentsError`: transport, decode, and status
+  variants).
 - `CORRELATION_ID_HEADER` / `generate_correlation_id()` - the
   cross-service tracing convention: callers may propagate a correlation
   id upstream; the client always injects one when absent.

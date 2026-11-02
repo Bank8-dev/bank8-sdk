@@ -22,7 +22,6 @@ chrono.workspace = true
 uuid.workspace = true
 bank8-ledger-contracts.workspace = true
 bank8-payments-contracts.workspace = true
-bank8-fdx-contracts.workspace = true
 bank8-regulatory-contracts.workspace = true
 
 [dev-dependencies]
