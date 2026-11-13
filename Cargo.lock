@@ -649,7 +649,7 @@ dependencies = [
 
 [[package]]
 name = "bank8"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "async-trait",
  "bank8-ledger-contracts",
@@ -668,7 +668,7 @@ dependencies = [
 
 [[package]]
 name = "bank8-ledger-contracts"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "chrono",
  "serde",
@@ -678,7 +678,7 @@ dependencies = [
 
 [[package]]
 name = "bank8-payments-contracts"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "chrono",
  "serde",
@@ -688,7 +688,7 @@ dependencies = [
 
 [[package]]
 name = "bank8-regulatory-contracts"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "chrono",
  "rust_decimal",
