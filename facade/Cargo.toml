@@ -5,7 +5,7 @@
 
 [package]
 name = "bank8"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2021"
 license = "UNLICENSED"
 description = "Bank8 namespace facade - every bank8 crate imports as bank8::{svc}::{kind} (architecture-principles §2.1)."
